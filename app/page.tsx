@@ -43,7 +43,6 @@ export default function Home() {
       <ThoseWereTheDays />
       <WhatIf />
       <TryAgain />
-      {/* <FullScreenVideo videoId="qTA0RuZoIxM" /> */}
       <FullScreenVideo videoId="mRJF-hZ6Gcs" scrollToNext />
       <StartListening />
     </>

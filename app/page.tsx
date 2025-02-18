@@ -17,34 +17,46 @@ import ICanBe from "@/components/Layout/Home/ICanBe";
 import ThoseWereTheDays from "@/components/Layout/Home/ThoseWereTheDays";
 import WhatIf from "@/components/Layout/Home/WhatIf";
 import TryAgain from "@/components/Layout/Home/TryAgain";
+import Hero from "@/components/Hero";
+import SectionTransition from "@/components/SectionTransition";
+import FullScreenLocalVideo from "@/components/Video/FullScreenLocalVideo";
 
 export default function Home() {
   return (
     <>
-      <IntroductionSection />
-      <FullScreenVideo videoId="Q6Jbq0_Kv3s" start={27} end={80} id="introduction" scrollToNext />
-      <AlbumSection />
-      <FullScreenVideo videoId="J8Cj4HoGG6Y" scrollToNext />
-      <WeNeedAResolution />
-      <LooseRap />
-      <FullScreenVideo videoId="j578MlA87Gg" start={144} end={201} scrollToNext />
-      <RockTheBoat />
-      <MoreThanAWoman />
-      <FullScreenVideo videoId="ECrvgCyR0tM" scrollToNext />
-      <NeverNoMore />
-      <ICare4U />
-      <ExtraSmooth />
-      <ReadBetweenTheLines />
-      <UGotNerve />
-      <IRefuse />
-      <FullScreenVideo videoId="tt0TrfzaExA" scrollToNext />
-      <ItsWhatever />
-      <ICanBe />
-      <ThoseWereTheDays />
-      <WhatIf />
-      <TryAgain />
-      <FullScreenVideo videoId="mRJF-hZ6Gcs" scrollToNext />
-      <StartListening />
-    </>
+      <Hero />
+       <FullScreenLocalVideo
+       title={"Aaliyah's Message"}
+        videoUrl="/media/epk-introduction.mp4"
+        autoplay={true}
+        muted={false}
+        scrollToNext={true}
+        id="rock-the-boat"
+      /> 
+        <IntroductionSection />
+        <FullScreenVideo videoId="Q6Jbq0_Kv3s" start={27} end={80} id="introduction" scrollToNext />
+        <AlbumSection />
+        <FullScreenVideo videoId="J8Cj4HoGG6Y" scrollToNext />
+        <WeNeedAResolution />
+        <LooseRap />
+        <FullScreenVideo videoId="j578MlA87Gg" start={144} end={201} scrollToNext />
+        <RockTheBoat />
+        <MoreThanAWoman />
+        <FullScreenVideo videoId="ECrvgCyR0tM" scrollToNext />
+        <NeverNoMore />
+        <ICare4U />
+        <ExtraSmooth />
+        <ReadBetweenTheLines />
+        <UGotNerve />
+        <IRefuse />
+        <FullScreenVideo videoId="tt0TrfzaExA" scrollToNext />
+        <ItsWhatever />
+        <ICanBe />
+        <ThoseWereTheDays />
+        <WhatIf />
+        <TryAgain />
+        <FullScreenVideo videoId="mRJF-hZ6Gcs" scrollToNext />
+        <StartListening />
+      </>
   );
 }

@@ -29,8 +29,37 @@ body {
   }
 }
 
+@keyframes flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
+
+@keyframes rimGlow {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
 .animate-marquee {
   animation: marquee 10s linear infinite;
+}
+
+.crt-effect {
+  animation: flicker 0.15s infinite;
+}
+
+.rim-glow {
+  animation: rimGlow 2s ease-in-out infinite;
+}
+
+.vhs-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgE1xVAAAABh0Uk5TAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRpVGZFnAAABx0lEQVQ4y2NgYDJgQAKCLkVpDIyGTAyMxAqbGBgEXQvRBR2LkhlYilEFBV0dGFiLUQUZXQNci1EFhYtdHYtRBUWKXR2LUQVF");
+  opacity: 0.03;
+  pointer-events: none;
 }
 
 .hover\:pause:hover {
@@ -47,4 +76,25 @@ body {
 
 .lyric-line:hover {
   @apply bg-gray-100;
+}
+
+/* Custom Volume Slider */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

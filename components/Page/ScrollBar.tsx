@@ -25,9 +25,6 @@ export default function ScrollBar({ children }: { children: React.ReactNode }) {
       >
         <motion.div
           className="w-[3px] bg-white/20 backdrop-blur-sm rounded-full"
-          style={{
-            height: `${scrollProgress}%`,
-          }}
           whileHover={{ 
             backgroundColor: "rgba(255, 255, 255, 0.4)",
             width: "4px"

@@ -27,14 +27,13 @@ export default function Home() {
       <Hero />
        <FullScreenLocalVideo
        title={"Aaliyah's Message"}
-        videoUrl="/media/epk-introduction.mp4"
         autoplay={true}
         muted={false}
         scrollToNext={true}
         id="rock-the-boat"
       /> 
-        <IntroductionSection />
-        <FullScreenVideo videoId="Q6Jbq0_Kv3s" start={27} end={80} id="introduction" scrollToNext />
+        {/* <IntroductionSection /> */}
+        {/* <FullScreenVideo videoId="Q6Jbq0_Kv3s" start={27} end={80} id="introduction" scrollToNext /> */}
         <AlbumSection />
         <FullScreenVideo videoId="J8Cj4HoGG6Y" scrollToNext />
         <WeNeedAResolution />

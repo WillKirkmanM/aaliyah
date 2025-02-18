@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Layout/Navbar";
 import { PlayerProvider } from "@/hooks/usePlayer";
 import { NavbarProvider } from "@/components/Layout/NavbarContext";
+import ScrollBar from "@/components/Page/ScrollBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,9 @@ export default function RootLayout({
         <NavbarProvider>
           <PlayerProvider>
             <Navbar />
-            {children}
+            <ScrollBar>
+              {children}
+            </ScrollBar>
           </PlayerProvider>
         </NavbarProvider>
       </body>

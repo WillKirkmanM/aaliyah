@@ -16,10 +16,21 @@
   <a href="https://aaliyah.parson.dev/about">About</a>
   ·
   <a href="https://aaliyah.parson.dev/unreleased">Unreleased</a>
+  ·
+  <a href="https://aaliyah.parson.dev/slowed">Slowed</a>
+
 </h4>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f5dce0ba-1c48-4592-8666-64c671b32baf" />
+  <img width="1280" alt="image" src="https://github.com/user-attachments/assets/f6d2f972-88fd-4678-93ec-0624d2849634" />
+</p>
+
+<p align="center">
+  <img width="1280" alt="image" src="https://github.com/user-attachments/assets/d02bc1d0-4f79-44b0-a742-5af466e12c86" />
+</p>
+
+<p align="center">
+  <img width="1280" alt="image" src="https://github.com/user-attachments/assets/731f283c-c64b-41a4-a842-10a73eca1a8f" />
 </p>
 
 <p align="center">

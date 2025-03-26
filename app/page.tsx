@@ -18,7 +18,6 @@ import ThoseWereTheDays from "@/components/Layout/Home/ThoseWereTheDays";
 import WhatIf from "@/components/Layout/Home/WhatIf";
 import TryAgain from "@/components/Layout/Home/TryAgain";
 import Hero from "@/components/Hero";
-import SectionTransition from "@/components/SectionTransition";
 import FullScreenLocalVideo from "@/components/Video/FullScreenLocalVideo";
 
 export default function Home() {

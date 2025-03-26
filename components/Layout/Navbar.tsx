@@ -219,6 +219,7 @@ export default function Navbar({ isControlsEnabled, onPlayPause }: NavbarProps) 
                     { href: '/tracklist', label: 'Tracklist' },
                     { href: '/about', label: 'About' },
                     { href: '/unreleased', label: 'Unreleased' },
+                    { href: '/slowed', label: 'Slowed' },
                   ].map(({ href, label }) => (
                     <Link
                       key={href}

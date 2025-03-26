@@ -18,8 +18,11 @@
   <a href="https://aaliyah.parson.dev/unreleased">Unreleased</a>
   ·
   <a href="https://aaliyah.parson.dev/slowed">Slowed</a>
-
 </h4>
+
+<p align="center">
+  Released in 2001, Aaliyah's Self-Titled Album provides a definition of the ideal, preserving traditionalist values through the rejection of short-term gratification for long-term tending. Her extension of contemporary standards with regards to her Music, provide an outlook to her maturation as a person, leaving an Everlasting Legacy.
+</p>
 
 <p align="center">
   <img width="1280" alt="image" src="https://github.com/user-attachments/assets/f6d2f972-88fd-4678-93ec-0624d2849634" />

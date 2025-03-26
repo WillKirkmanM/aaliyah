@@ -44,10 +44,12 @@ export default function FullScreenLocalVideo({
       setTvOn(true);
       if (isPlaying) {
         player.playVideo();
+        setNavbarOpacity(0.2)
       }
     } else if (player) {
       setTvOn(false);
       player.pauseVideo();
+      setNavbarOpacity(0.8)
     }
   }, [isInView, isPlaying, player]);
 
@@ -61,6 +63,8 @@ export default function FullScreenLocalVideo({
       setIsPlaying(!isPlaying);
     }
   };
+
+
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseInt(e.target.value);
@@ -81,128 +85,202 @@ export default function FullScreenLocalVideo({
     }
   };
 
-  return (
+    return (
     <motion.section
       ref={ref}
-      id="tv-section"
-      className="h-screen relative bg-[#1a1a1a] overflow-hidden flex items-center justify-center"
+      id="player-section"
+      className="h-screen relative bg-[#050A18] overflow-hidden flex flex-col items-center justify-center gap-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       <div className="absolute inset-0 overflow-hidden">
-        <motion.video
-          className="absolute w-[120%] h-[120%] object-cover scale-110 blur-3xl opacity-30"
-          autoPlay={autoplay}
-          muted
-          playsInline
-          loop
-          initial={{ opacity: 0 }}
-          animate={{ opacity: tvOn ? 0.3 : 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <source src={`https://www.youtube.com/watch?v=${videoId}`} type="video/mp4" />
-        </motion.video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010B27] to-[#190028]" />
+        <div className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ffaa' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+          }}
+        />
       </div>
-
+  
       <motion.div 
-        className="relative w-[80vh] aspect-[4/3] bg-[#2a2a2a] rounded-[40px] p-8 shadow-2xl cursor-pointer group"
+        className="relative z-30 mb-2"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: tvOn ? 1 : 0, y: tvOn ? 0 : -20 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div 
+          className="font-mono text-xl flex flex-col items-center gap-2 px-10 py-4 rounded-lg backdrop-blur-sm"
+          style={{
+            background: 'rgba(5,10,25,0.75)',
+            boxShadow: '0 0 30px rgba(0,200,255,0.4), inset 0 0 10px rgba(0,200,255,0.2)',
+            border: '1px solid rgba(0,255,255,0.2)',
+          }}
+          animate={{
+            boxShadow: tvOn ? [
+              '0 0 30px rgba(0,200,255,0.4), inset 0 0 10px rgba(0,200,255,0.2)',
+              '0 0 40px rgba(0,200,255,0.6), inset 0 0 15px rgba(0,200,255,0.3)',
+              '0 0 30px rgba(0,200,255,0.4), inset 0 0 10px rgba(0,200,255,0.2)',
+            ] : '0 0 0px rgba(0,200,255,0)'
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#00FFEE] to-transparent opacity-80" />
+          
+          <motion.h2 
+            className="text-[#00FFEE] tracking-[0.15em] uppercase font-bold text-center"
+            style={{
+              textShadow: '0 0 5px #00FFEE, 0 0 10px #00FFEE, 0 0 15px #00FFEE'
+            }}
+            animate={{
+              textShadow: tvOn ? [
+                '0 0 5px #00FFEE, 0 0 10px #00FFEE, 0 0 15px #00FFEE',
+                '0 0 7px #00FFEE, 0 0 14px #00FFEE, 0 0 21px #00FFEE',
+                '0 0 5px #00FFEE, 0 0 10px #00FFEE, 0 0 15px #00FFEE'
+              ] : '0 0 0px #00FFEE'
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            {title || 'AALIYAH'}
+          </motion.h2>
+          
+          <motion.div 
+            className="text-[#FF00AA] text-sm tracking-wider uppercase"
+            style={{
+              textShadow: '0 0 5px #FF00AA, 0 0 10px #FF00AA'
+            }}
+            animate={{
+              textShadow: [
+                '0 0 5px #FF00AA, 0 0 10px #FF00AA',
+                '0 0 8px #FF00AA, 0 0 16px #FF00AA',
+                '0 0 5px #FF00AA, 0 0 10px #FF00AA'
+              ]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+          >
+            {tvOn ? "NOW PLAYING" : "STANDBY"}
+          </motion.div>
+          
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#FF00AA] to-transparent opacity-80" />
+        </motion.div>
+      </motion.div>
+  
+      <motion.div 
+        className="relative w-[95vh] aspect-[16/9] bg-gradient-to-br from-[#1A1A2E] to-[#16213E] rounded-[20px] p-[2px] shadow-2xl cursor-pointer group overflow-hidden"
         onClick={togglePlayPause}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
         style={{
           boxShadow: `
-            inset 0 0 50px rgba(0,0,0,0.5),
-            0 0 30px rgba(255,255,255,0.1),
-            0 0 100px rgba(255,255,255,0.2)
+            0 0 0 2px rgba(0,200,255,0.3),
+            0 0 30px rgba(0,180,255,0.6),
+            0 0 100px rgba(0,150,255,0.3)
           `,
         }}
       >
-        <motion.div 
-          className="absolute -top-12 left-1/3 -translate-x-1/2 z-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: tvOn ? 1 : 0, y: tvOn ? 0 : 20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="font-mono text-sm text-white/70 flex items-center gap-3 px-6 py-2 bg-black/50 rounded-full backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-red-500/70 animate-pulse" />
-            <span className="tracking-wider uppercase whitespace-nowrap">
-              {title || 'AALIYAH ▪ THE RED ALBUM'} • {tvOn ? "REC" : "STANDBY"}
-            </span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="absolute -inset-1 rounded-[44px] opacity-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: tvOn ? 0.5 : 0 }}
-          transition={{ duration: 0.5 }}
-          style={{
-            background: 'rgba(255,255,255,0.1)',
-            backdropFilter: 'blur(20px)',
-          }}
-        />
-
-        <div className="relative w-full h-full bg-black rounded-[20px] overflow-hidden">
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"
-            animate={{
-              opacity: tvOn ? [0.1, 0.2, 0.1] : 0,
-            }}
-            transition={{
-              duration: 0.1,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-
-          <div className="absolute inset-0 w-full h-full">
-            <YouTube
-              videoId={videoId}
-              opts={opts}
-              onReady={onReady}
-              onEnd={onEnd}
-              className="absolute inset-0 w-full h-full"
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        <div className="absolute inset-0 rounded-[20px] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#CDD7E0] to-[#8B93A2] opacity-80" />
+          <div className="absolute inset-[3px] rounded-[18px] overflow-hidden bg-[#060810]" />
+        </div>
+  
+        <div className="relative w-full h-full rounded-[16px] overflow-hidden z-10 p-[16px]">
+          <div className="relative w-full h-full bg-black rounded-[10px] overflow-hidden border-t border-l border-[#4A5569] border-opacity-40">
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-[#00FFFF10] to-[#FF10FF10] z-20 pointer-events-none mix-blend-overlay"
+              animate={{
+                opacity: tvOn ? [0.1, 0.3, 0.1] : 0,
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+  
+            <div className="absolute inset-0 w-full h-full z-10 overflow-hidden">
+              <YouTube
+                videoId={videoId}
+                opts={opts}
+                onReady={onReady}
+                onEnd={onEnd}
+                className="absolute inset-0 w-full h-full"
+                style={{ 
+                  position: 'absolute', 
+                  top: '50%', 
+                  left: '50%', 
+                  width: '140%',
+                  height: '140%',
+                  transform: 'translate(-50%, -50%)', 
+                  objectFit: 'cover' 
+                }}
+              />
+            </div>
+  
+            <div className="absolute inset-0 bg-repeat-y pointer-events-none z-20 opacity-20"
+              style={{
+                backgroundImage: "linear-gradient(transparent 50%, rgba(0, 0, 0, 0.1) 50%)",
+                backgroundSize: "100% 2px",
+              }}
+            />
+  
+            <div className="absolute inset-0 opacity-30 z-10 pointer-events-none"
+              style={{
+                background: "radial-gradient(circle at 50% 50%, rgba(0,255,255,0.2) 0%, transparent 70%)",
+              }}
             />
           </div>
-
-          <div 
-            className="absolute inset-0 bg-repeat-y pointer-events-none"
-            style={{
-              backgroundImage: "linear-gradient(transparent 50%, rgba(0, 0, 0, 0.1) 50%)",
-              backgroundSize: "100% 4px",
-            }}
-          />
-
-          <div 
-            className="absolute inset-0 opacity-20"
-            style={{
-              background: "radial-gradient(circle at 70% 30%, white 0%, transparent 50%)",
-            }}
-          />
         </div>
-
-        <motion.div 
-          className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent px-6 py-3 rounded-b-[20px] flex items-center gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: tvOn ? 1 : 0, y: tvOn ? 0 : 20 }}
-          transition={{ duration: 0.5 }}
+      </motion.div>
+  
+      <motion.div 
+        className="relative z-30 w-[80%] max-w-[900px] flex items-center justify-between gap-6 p-3 rounded-full mt-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: tvOn ? 1 : 0, y: tvOn ? 0 : 20 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          background: 'linear-gradient(to right, rgba(20,30,60,0.85), rgba(40,20,80,0.85))',
+          boxShadow: '0 0 20px rgba(0,200,255,0.3), inset 0 0 10px rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(100,200,255,0.2)'
+        }}
+      >
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            togglePlayPause();
+          }}
+          className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+          style={{
+            background: 'linear-gradient(135deg, #2B3760 0%, #0B1023 100%)',
+            boxShadow: isPlaying ? 
+              '0 0 15px rgba(0,255,255,0.8), inset 0 0 5px rgba(0,255,255,0.5)' : 
+              '0 0 10px rgba(0,150,255,0.4), inset 0 0 3px rgba(0,150,255,0.3)'
+          }}
         >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              togglePlayPause();
-            }}
-            className="text-white/70 hover:text-white transition-colors"
-          >
-            {isPlaying ? (
-              <Pause size={20} />
-            ) : (
-              <Play size={20} />
-            )}
-          </button>
-
-          <div className="flex items-center gap-2">
-            <Volume2 size={18} className="text-white/70" />
+          {isPlaying ? (
+            <Pause size={20} className="text-[#00DDFF]" style={{filter: 'drop-shadow(0 0 2px #00DDFF)'}} />
+          ) : (
+            <Play size={20} className="text-[#00DDFF]" style={{filter: 'drop-shadow(0 0 2px #00DDFF)'}} />
+          )}
+        </button>
+  
+        <div className="flex items-center gap-4 flex-1 px-4">
+          <Volume2 size={16} className="text-[#00DDFF]" style={{filter: 'drop-shadow(0 0 2px #00DDFF)'}} />
+          <div className="w-full h-2 bg-[#071428] rounded-full overflow-hidden p-[1px]">
             <input
               type="range"
               min="0"
@@ -211,24 +289,35 @@ export default function FullScreenLocalVideo({
               value={volume}
               onChange={handleVolumeChange}
               onClick={(e) => e.stopPropagation()}
-              className="w-24 h-1 bg-white/20 rounded-lg appearance-none cursor-pointer 
-                        hover:bg-white/30 transition-colors"
+              className="w-full appearance-none bg-transparent cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00FFEE] [&::-webkit-slider-thumb]:shadow-[0_0_10px_#00FFEE]"
+              style={{
+                background: `linear-gradient(to right, #00FFEE ${volume}%, #071428 ${volume}%)`,
+                height: '4px'
+              }}
             />
           </div>
-        </motion.div>
-
-        <div className="absolute bottom-16 right-6 flex gap-3">
+        </div>
+  
+        <div className="flex gap-2">
           {[...Array(3)].map((_, i) => (
             <motion.div 
               key={i}
-              className="w-4 h-4 rounded-full bg-[#1a1a1a] border-2"
+              className="w-3 h-3 rounded-full"
+              style={{
+                background: i === 0 ? '#00FFAA' : i === 1 ? '#FF00AA' : '#00AAFF',
+              }}
               animate={{
-                borderColor: tvOn ? ['#3a3a3a', '#4a4a4a', '#3a3a3a'] : '#3a3a3a',
+                boxShadow: tvOn ? 
+                  [`0 0 5px ${i === 0 ? '#00FFAA' : i === 1 ? '#FF00AA' : '#00AAFF'}`,
+                   `0 0 10px ${i === 0 ? '#00FFAA' : i === 1 ? '#FF00AA' : '#00AAFF'}`,
+                   `0 0 5px ${i === 0 ? '#00FFAA' : i === 1 ? '#FF00AA' : '#00AAFF'}`] : 
+                  `0 0 0px ${i === 0 ? '#00FFAA88' : i === 1 ? '#FF00AA88' : '#00AAFF88'}`,
               }}
               transition={{
-                duration: 2,
+                duration: 1.5,
                 repeat: Infinity,
-                ease: "linear",
+                ease: "easeInOut",
+                delay: i * 0.2
               }}
             />
           ))}

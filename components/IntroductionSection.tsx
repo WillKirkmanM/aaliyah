@@ -155,7 +155,7 @@ export default function IntroductionSection() {
                      text-xl font-semibold transition-all duration-200
                      hover:text-purple-300 flex items-center gap-2 group-hover:bg-black/80"
           >
-            Begin The Journey
+            Journey to the Past
             <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

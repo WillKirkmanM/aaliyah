@@ -17,8 +17,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AALIYAH - The Red Album",
-  description: "Explore AALIYAH's vulnerable and feminine critique through her self titled album",
+  title: "AALIYAH | The Red Album",
+  description: "Aaliyah’s Self-Titled Album provides a definition of the ideal, preserving traditionalist values through the rejection of short-term gratification for long-term tending. Her extension of contemporary standards with regards to her Music, provide an outlook to her maturation as a person, leaving an Everlasting Legacy.",
+  openGraph: {
+    title: "AALIYAH | The Red Album",
+    description: "Aaliyah’s Self-Titled Album provides a definition of the ideal, preserving traditionalist values through the rejection of short-term gratification for long-term tending. Her extension of contemporary standards with regards to her Music, provide an outlook to her maturation as a person, leaving an Everlasting Legacy.",
+    images: [{
+      url: '/api/og',
+      width: 1200,
+      height: 630,
+      alt: 'AALIYAH | The Red Album',
+    }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "AALIYAH | The Red Album",
+    description: "Released in 2001, Aaliyah’s Self-Titled Album provides a definition of the ideal, preserving traditionalist values through the rejection of short-term gratification for long-term tending. Her extension of contemporary standards with regards to her Music, provide an outlook to her maturation as a person, leaving an Everlasting Legacy.",
+    images: ['/api/og'],
+  },
 };
 
 export default function RootLayout({
